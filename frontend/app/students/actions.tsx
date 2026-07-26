@@ -23,3 +23,15 @@ export async function addStudent(formData: FormData) {
 
   revalidatePath("/students");
 }
+
+export async function deleteStudent(studentId: string) {
+  "use server";
+
+  await prisma.student.delete({
+    where: {
+      student_id: studentId,
+    },
+  });
+
+  revalidatePath("/students");
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import DeleteButton from "./DeleteButton";
 
 type Student = {
   student_id: string;
@@ -10,6 +11,7 @@ type Student = {
   programme: string | null;
   level: number | null;
   email: string | null;
+  total_fees: string;
 };
 
 type Props = {
@@ -45,6 +47,7 @@ export default function StudentTable({ students }: Props) {
               <th className="p-4">Programme</th>
               <th className="p-4">Level</th>
               <th className="p-4">Email</th>
+              <th className="p-4">Fees</th>
               <th className="p-4">Actions</th>
             </tr>
 
@@ -71,15 +74,15 @@ export default function StudentTable({ students }: Props) {
 
                 <td className="p-4">{student.email}</td>
 
+                <td className="p-4">GH₵ {student.total_fees}</td>
+
                 <td className="p-4">
 
                   <button className="bg-green-600 text-white px-3 py-1 rounded mr-2">
                     Edit
                   </button>
 
-                  <button className="bg-red-600 text-white px-3 py-1 rounded">
-                    Delete
-                  </button>
+                  <DeleteButton studentId={student.student_id} />
 
                 </td>
 

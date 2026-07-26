@@ -9,6 +9,11 @@ export default async function StudentsPage() {
     },
   });
 
+  const formattedStudents = students.map((student) => ({
+  ...student,
+  total_fees: student.total_fees.toString(),
+  }));
+
   return (
     <main className="p-8 bg-slate-100 min-h-screen">
       <div className="mb-8">
@@ -19,7 +24,7 @@ export default async function StudentsPage() {
         <AddStudentForm />
       </div>
 
-      <StudentTable students={students} />
+      <StudentTable students= {formattedStudents} />
     </main>
   );
 }
