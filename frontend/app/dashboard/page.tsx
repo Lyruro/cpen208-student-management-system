@@ -64,7 +64,7 @@ export default async function Dashboard() {
           </Link>
 
           <Link
-            href="/fees"
+            href="/fee-payments"
             className="bg-orange-600 text-white px-5 py-3 rounded-lg"
           >
             Fee Payments
