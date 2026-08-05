@@ -35,3 +35,27 @@ export async function deleteStudent(studentId: string) {
 
   revalidatePath("/students");
 }
+
+export async function updateStudent(formData: FormData) {
+  const studentId = formData.get("student_id") as string;
+
+  await prisma.student.update({
+    where: {
+      student_id: studentId,
+    },
+    data: {
+      first_name: formData.get("first_name") as string,
+      last_name: formData.get("last_name") as string,
+      gender: formData.get("gender") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      programme: formData.get("programme") as string,
+      level: Number(formData.get("level")),
+      total_fees: new Prisma.Decimal(
+        formData.get("total_fees") as string
+      ),
+    },
+  });
+
+  revalidatePath("/students");
+}
